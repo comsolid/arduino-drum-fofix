@@ -4,28 +4,22 @@
 
 #define NUM_SENSORS 6
 #define DRUM_HIT 1000      // Minimum Analog value to cause a drum hit
-#define DELAY 100
+#define DELAY 70
 #define MAX_PLAY_TIME 100  // Cycles before a 2nd hit is allowed
 
 // these constants won't change:
-const int ledPin = 13;      // led connected to digital pin 13
-const int threshold = 100;  // threshold value to decide when the detected sound is a knock or not
-
 const int knocks[NUM_SENSORS] = {A0, A1, A2, A3, A4, A5}; // the piezos are connected to analog pins
 
-boolean activePad[NUM_SENSORS] = {0,0,0,0,0,0};                   // Array of flags of pad currently playing
-int PinPlayTime[NUM_SENSORS] = {0,0,0,0,0,0};                     // Counter since pad started to play
+boolean activePad[NUM_SENSORS] = {0,0,0,0,0,0};   // Array of flags of pad currently playing
+int PinPlayTime[NUM_SENSORS] = {0,0,0,0,0,0};     // Counter since pad started to play
 
 int sensorReading = 0;      // variable to store the value read from the sensor pin
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(ledPin, OUTPUT); // declare the ledPin as as OUTPUT
-  Serial.begin(9600);       // use the serial port
+  Serial.begin(57600);       // use the serial port
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   for (int i = 0; i < NUM_SENSORS; i++) {
     
     sensorReading = analogRead(knocks[i]);
