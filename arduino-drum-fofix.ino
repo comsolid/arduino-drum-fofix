@@ -5,7 +5,7 @@
 #define NUM_SENSORS 6
 #define DRUM_HIT 1000      // Minimum Analog value to cause a drum hit
 #define DELAY 70
-#define MAX_PLAY_TIME 100  // Cycles before a 2nd hit is allowed
+#define MAX_PLAY_TIME 90  // Cycles before a 2nd hit is allowed
 
 // these constants won't change:
 const int knocks[NUM_SENSORS] = {A0, A1, A2, A3, A4, A5}; // the piezos are connected to analog pins
@@ -48,6 +48,8 @@ void play(int knock, int sensorReading) {
   if (sensorReading > DRUM_HIT) {
     Serial.print("Sensor reading: ");
     Serial.print(sensorReading);
+    Serial.print(", knock: ");
+    Serial.print(knock);
     switch(knock) {
       case A0:
         Serial.println(", Knock Red!");
@@ -58,14 +60,18 @@ void play(int knock, int sensorReading) {
       case A2:
         Serial.println(", Knock Blue!");
         break;
-      case A3:
+      /*case A3:
         Serial.println(", Knock Green!");
         break;
       case A4:
         Serial.println(", Knock Orange!");
         break;
+      case A5:
+        Serial.println(", Knock Orange!");
+        break;*/
+      default:
+        Serial.println(", ignored value.");
     }
-    delay(DELAY);
   }
 }
 
