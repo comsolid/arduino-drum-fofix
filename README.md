@@ -10,6 +10,8 @@
 
 ![PAD](img/drumpad.png)
 
+![Examplo FoFiX Drum](img/fofix-drum-screenshot.jpg)
+
 ## Projetos semelhantes
 
 * <http://www.instructables.com/id/MIDI-Arduino-Drums/> MIDI Arduino Drums
